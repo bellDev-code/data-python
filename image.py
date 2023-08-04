@@ -40,18 +40,24 @@ arr = np.reshape(arr, (5,3))
 
 # image 자료
 fileList = glob('d:/data/img/*.jpg')
-img = Image.open(fileList[0]).convert('RGB').resize((100,100))
+img = Image.open(fileList[0]).convert('RGB').resize((500,300))
+img2 = Image.open(fileList[1]).convert('RGB').resize((500,300))
 np.shape(img) # 30행과 50열, 3채널 [r, g, b] (30, 50, 3)
 imgArr = np.array(img)
+imgArr2 = np.array(img2)
 
 # numpy array는 for문, if문 사용하지 않는다.
 # imgArr[imgArr[:,:,:]>100] = 0
 
+imgArr[:200,:,:] = imgArr2[:200,:,:]
+plt.imshow(imgArr)
+plt.show()
+
 # 머신러닝 계산이 필요할때
 # 저장할때 file 0 - 255로
-plt.subplot(1,2,1)
-plt.imshow(imgArr/255) # 연산을 위해서
+# plt.subplot(1,2,1)
+# plt.imshow(imgArr/255) # 연산을 위해서
 
-plt.subplot(1,2,2)
-plt.imshow(imgArr/127.5-1)
-plt.show()
+# plt.subplot(1,2,2)
+# plt.imshow(imgArr/127.5-1)
+# plt.show()
