@@ -6,6 +6,8 @@ for i in range(size):
     arr[i] = i * 2
 
 # print(arr)
+
+# 기본 문법
 # [ (변수를 활용한 값) for (사용할 변수 이름) in (순회할 수 있는 값)]
 size = 10
 arr = [n for n in range(1, 16) if n % 2 == 0 or n % 3 == 0]
