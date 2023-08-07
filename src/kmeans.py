@@ -2,6 +2,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.manifold import TSNE
+
+# dataset = pd.read_csv('https://raw.githubusercontent.com/hmkim312/datas/main/mallcustomer/Mall_Customers.csv')
 
 base_path = 'd:/data/'
 aisles = pd.read_csv(base_path + 'aisles.csv')
@@ -31,3 +34,13 @@ temp = pd.merge(temp, departments, on="department_id")
 # temp.order_hour_of_day.value_counts()
 
 # 데이터 전처리
+X = pd.crosstab(index=temp.user_id, columns=temp.department)
+# print(X)
+
+tsne = TSNE(n_components=2)
+tsne_data = tsne.fit_transform(X)
+# print(tsne_data)
+
+plt.figure(figsize=(8,8))
+plt.scatter(tsne_data[:, 0], tsne_data[:, 1], s=10, c='y')
+plt.show()
